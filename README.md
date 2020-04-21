@@ -13,4 +13,4 @@ Learn the significs of Dockerfiles
 
 ## Bonus
 
-In my project there are 2 simple files - server for Minecraft and environment for C-coding: gcc, vim, essential-builds and etc. I prefer alpine because it's the litest container, for first C-projects it's really good.
+In my project there are 2 simple files - server for Minecraft and environment for C-coding: gcc, vim, essential-builds and etc. I prefer alpine because it's the lightest container, for first C-projects it's really good.
