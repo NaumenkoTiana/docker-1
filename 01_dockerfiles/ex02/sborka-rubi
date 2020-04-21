@@ -1,0 +1,39 @@
+#!/bin/bash
+
+apt-get update && apt-get upgrade -y
+apt-get install -y vim git-core wget zlib1g-dev sqlite3 libsqlite3-dev
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+# Now you need to reboot system, then run "type rbenv". If everything is ok, then continue
+
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+apt-get install build-essential libssl-dev libcurl4-openssl-dev libreadline-dev -y
+
+# Lists all versions of ruby 
+rbenv install --list
+
+# -k key saves ruby code
+rbenv install 2.6.1 -k
+rbenv global 2.6.1
+
+# Now we need Rails. So we do few steps. Open file with Debian repositores
+# vim /etc/apt/sources.list
+# Put there this lines
+# deb http://ftp.us.debian.org/debian/ wheezy-backports main
+# deb-src http://ftp.us.debian.org/debian/ wheezy-backports main
+# i'm not sure< that is necessary
+
+apt-get install sqlite3 libsqlite3-dev
+# apt-get install nodejs
+gem install rail
+
+# Yarn installing
+curl -sL https://deb.nodesource.com/setup_13.x | bash -
+apt-get install -y nodejs
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt-get update && apt-get install yarn
+
